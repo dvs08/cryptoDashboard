@@ -1,43 +1,102 @@
-// import React, { useState } from 'react';
+// import React, { useState, useEffect } from 'react';
 // import { useNavigate } from 'react-router-dom'; 
 // import '../style/signup.css';
 
 // const Signup = () => {
-//     const navigate = useNavigate();
-//     const [input, setInput] = useState({
-//         name: "",
-//         email: "",
-//         username: "",
-//         password: "",
-//         DOB: "",
-//         designation: "",
-//     });
-//     const [error, setError] = useState(""); 
+//     // const navigate = useNavigate();
+//     // const [input, setInput] = useState({
+//     //     name: "",
+//     //     email: "",
+//     //     username: "",
+//     //     password: "",
+//     //     DOB: "",
+//     //     designation: "",
+//     // });
+//     // const [error, setError] = useState(""); 
 
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
+//     // const handleSubmit = (e) => {
+//     //     e.preventDefault();
 
-//         if (!input.name || !input.email || !input.username || !input.password || !input.DOB || !input.designation) {
-//             setError("All fields are required.");
-//             return;  
-//         }
+//     //     if (!input.name || !input.email || !input.username || !input.password || !input.DOB || !input.designation) {
+//     //         setError("All fields are required.");
+//     //         return;  
+//     //     }
 
-//         const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
-//         existingUsers.push(input);
-//         localStorage.setItem("users", JSON.stringify(existingUsers));
+//     //     const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+//     //     existingUsers.push(input);
+//     //     localStorage.setItem("users", JSON.stringify(existingUsers));
 
-//         setInput({
-//             name: "",
-//             email: "",
-//             username: "",
-//             password: "",
-//             DOB: "",
-//             designation: "",
-//         });
+//     //     setInput({
+//     //         name: "",
+//     //         email: "",
+//     //         username: "",
+//     //         password: "",
+//     //         DOB: "",
+//     //         designation: "",
+//     //     });
 
-//         navigate('/login');
+//     //     navigate('/login');
+//     // };
+//  const navigate = useNavigate();
+//  const [input, setInput] = useState({
+//     name: "",
+//     email: "",
+//     username: "",
+//     password: "",
+//     DOB: "",
+//     designation: "",
+//     gender: "", 
+//   });
+//   const [error, setError] = useState(""); 
+
+//   useEffect(() => {
+//     const isAuthenticated = localStorage.getItem("isAuthenticated");
+//     if (isAuthenticated) {
+//       navigate('/', { replace: true }); 
+//     }
+//   }, [navigate]);
+
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     if (!input.name || !input.email || !input.username || !input.password || !input.DOB || !input.designation || !input.gender) {
+//       setError("All fields are required.");
+//       return;  
+//     }
+
+//     const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+    
+
+//     //duplicate
+
+//     const userExist = existingUsers.some(user => user.email === input.email || user.username === input.username || user.password === input.password);
+
+//     if(userExist){
+//       setError("Already in use");
+//       console.log("Error after update: ", error);
+//       return;
+//     }
+//     const newUser = {
+
+//       ...input,
+
 //     };
+//     existingUsers.push(newUser);
+//     localStorage.setItem("users", JSON.stringify(existingUsers));
 
+//     setInput({
+//       name: "",
+//       email: "",
+//       username: "",
+//       password: "",
+//       DOB: "",
+//       designation: "",
+//       gender: "", 
+//     });
+
+//     navigate('/login');
+//   };
 //     return (
 //         <div className="signup">
 //             <div className="signup-card">
@@ -126,10 +185,208 @@
 
 /*MDS VERSION */
 
-import React, { useState , useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Card, Text, Row, Column, Label, Input, Dropdown, DatePicker, Button } from '@innovaccer/design-system';
-import '@innovaccer/design-system/css/dist/index.css';
+// import React, { useState , useEffect} from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { Card, Text, Row, Column, Label, Input, Dropdown, DatePicker, Button } from '@innovaccer/design-system';
+// import '@innovaccer/design-system/css/dist/index.css';
+// import '../style/signup.css';
+
+// const Signup = () => {
+//   const navigate = useNavigate();
+//   const [input, setInput] = useState({
+//     name: "",
+//     email: "",
+//     username: "",
+//     password: "",
+//     DOB: "",
+//     designation: "",
+//     gender: "", 
+//   });
+//   const [error, setError] = useState(""); 
+
+//   useEffect(() => {
+//     const isAuthenticated = localStorage.getItem("isAuthenticated");
+//     if (isAuthenticated) {
+//       navigate('/', { replace: true }); 
+//     }
+//   }, [navigate]);
+
+
+
+//   const genderOptions = [
+//     { label: 'Male', value: 'Male' },
+//     { label: 'Female', value: 'Female' }
+//   ];
+
+//   const onChange = (value, name) => {
+//     setInput({ ...input, [name]: value });
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     if (!input.name || !input.email || !input.username || !input.password || !input.DOB || !input.designation || !input.gender) {
+//       setError("All fields are required.");
+//       return;  
+//     }
+
+//     const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+    
+
+//     //duplicate
+
+//     const userExist = existingUsers.some(user => user.email === input.email || user.username === input.username || user.password === input.password);
+
+//     if(userExist){
+//       setError("Already in use");
+//       console.log("Error after update: ", error);
+//       return;
+//     }
+
+//     const newUser = {
+
+//       ...input,
+
+//     };
+
+
+//     existingUsers.push(newUser);
+//     localStorage.setItem("users", JSON.stringify(existingUsers));
+
+//     setInput({
+//       name: "",
+//       email: "",
+//       username: "",
+//       password: "",
+//       DOB: "",
+//       designation: "",
+//       gender: "", 
+//     });
+
+//     navigate('/login');
+//   };
+
+//   return (
+//     <div className="signup-wrapper">
+//       <Card className="px-6 py-6">
+//         <Text appearance="subtle" weight="strong">Create an Account</Text>
+//         <form onSubmit={handleSubmit}>
+//           <Column className="mt-6">
+//             {/* Name */}
+//             <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
+//               <Label withInput={true} required={true}>Name</Label>
+//               <Input
+//                 name="name"
+//                 value={input.name}
+//                 onChange={(e) => onChange(e.target.value, e.target.name)}
+//                 type="text"
+//                 placeholder="Your Name"
+//                 icon="person"
+//                 autocomplete={'off'}
+//               />
+//             </Column>
+
+//             {/* Email */}
+//             <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
+//               <Label withInput={true} required={true}>Email Address</Label>
+//               <Input
+//                 name="email"
+//                 value={input.email}
+//                 onChange={(e) => onChange(e.target.value, e.target.name)}
+//                 type="email"
+//                 placeholder="E.g. abc@gmail.com"
+//                 icon="mail"
+//                 autocomplete={'off'}
+//               />
+//             </Column>
+
+//             {/* Username */}
+//             <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
+//               <Label withInput={true} required={true}>Username</Label>
+//               <Input
+//                 name="username"
+//                 value={input.username}
+//                 onChange={(e) => onChange(e.target.value, e.target.name)}
+//                 type="text"
+//                 placeholder="Username"
+//                 icon="person"
+//                 autocomplete={'off'}
+//               />
+//             </Column>
+
+//             {/* Password */}
+//             <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
+//               <Label withInput={true} required={true}>Password</Label>
+//               <Input
+//                 name="password"
+//                 value={input.password}
+//                 onChange={(e) => onChange(e.target.value, e.target.name)}
+//                 type="password"
+//                 placeholder="Password"
+//                 icon="lock"
+//                 autocomplete={'off'}
+//               />
+//             </Column>
+
+//             {/* Date of Birth */}
+//             <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
+//               <Label withInput={true} required={true}>Date of Birth</Label>
+//               <DatePicker
+//                 name="DOB"
+//                 value={input.DOB}
+//                 withInput={true}
+//                 onDateChange={(currentDate) => onChange(currentDate, 'DOB')}
+//                 inputOptions={{
+//                   placeholder: 'MM/DD/YYYY',
+//                   icon: 'cake',
+//                   mask: [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]
+//                 }}
+//               />
+//             </Column>
+
+//             {/* Designation */}
+//             <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
+//               <Label withInput={true} required={true}>Designation</Label>
+//               <Input
+//                 name="designation"
+//                 value={input.designation}
+//                 onChange={(e) => onChange(e.target.value, e.target.name)}
+//                 type="text"
+//                 placeholder="Your Designation"
+//                 icon="work"
+//                 autocomplete={'off'}
+//               />
+//             </Column>
+
+//             {/* Gender */}
+//             <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
+//               <Label withInput={true} required={true}>Gender</Label>
+//               <Dropdown
+//                 options={genderOptions}
+//                 value={input.gender}
+//                 onChange={(value) => onChange(value, 'gender')}
+//               />
+//             </Column>
+//           </Column>
+
+//           {/* Error Message */}
+//           {error && <div className="error-message">{error}</div>}
+
+//           {/* Submit Button */}
+//           <div className="d-flex justify-content-center">
+//             <Button className="mr-4" onClick={() => navigate('/login')}>Cancel</Button>
+//             <Button type="submit" appearance="success" disabled={!input.name || !input.email || !input.username || !input.password || !input.DOB || !input.designation || !input.gender}>Register</Button>
+//           </div>
+//         </form>
+//       </Card>
+//     </div>
+//   );
+// };
+
+// export default Signup;
+
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import '../style/signup.css';
 
 const Signup = () => {
@@ -144,7 +401,7 @@ const Signup = () => {
     gender: "", 
   });
   const [error, setError] = useState(""); 
-
+  const [showPassword, setShowPassword] = useState(false);
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     if (isAuthenticated) {
@@ -152,14 +409,8 @@ const Signup = () => {
     }
   }, [navigate]);
 
-
-
-  const genderOptions = [
-    { label: 'Male', value: 'Male' },
-    { label: 'Female', value: 'Female' }
-  ];
-
-  const onChange = (value, name) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setInput({ ...input, [name]: value });
   };
 
@@ -173,24 +424,16 @@ const Signup = () => {
 
     const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
     
+    const userExist = existingUsers.some(
+      user => user.email === input.email || user.username === input.username
+    );
 
-    //duplicate
-
-    const userExist = existingUsers.some(user => user.email === input.email || user.username === input.username || user.password === input.password);
-
-    if(userExist){
-      setError("Already in use");
-      console.log("Error after update: ", error);
+    if (userExist) {
+      setError("Email or Username already in use.");
       return;
     }
 
-    const newUser = {
-
-      ...input,
-
-    };
-
-
+    const newUser = { ...input };
     existingUsers.push(newUser);
     localStorage.setItem("users", JSON.stringify(existingUsers));
 
@@ -207,123 +450,142 @@ const Signup = () => {
     navigate('/login');
   };
 
+  const allFieldsFilled = Object.values(input).every(field => field.trim() !== "");
+
+  const initialState = {
+      name: "",
+      email: "",
+      username: "",
+      password: "",
+      DOB: "",
+      designation: "",
+      gender: "", 
+};
+
+const handleCancel = () => {
+  setInput(initialState);
+};
+
   return (
-    <div className="signup-wrapper">
-      <Card className="px-6 py-6">
-        <Text appearance="subtle" weight="strong">Create an Account</Text>
+    <div className="signup">
+      <div className="signup-card">
+        <h2>Create an Account</h2>
         <form onSubmit={handleSubmit}>
-          <Column className="mt-6">
-            {/* Name */}
-            <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
-              <Label withInput={true} required={true}>Name</Label>
-              <Input
-                name="name"
-                value={input.name}
-                onChange={(e) => onChange(e.target.value, e.target.name)}
-                type="text"
-                placeholder="Your Name"
-                icon="person"
-                autocomplete={'off'}
-              />
-            </Column>
+          {/* Name */}
+          <div className="form-group">
+            <input
+              name="name"
+              value={input.name}
+              onChange={handleChange}
+              type="text"
+              placeholder="Your Name"
+              autoComplete="off"
+            />
+          </div>
 
-            {/* Email */}
-            <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
-              <Label withInput={true} required={true}>Email Address</Label>
-              <Input
-                name="email"
-                value={input.email}
-                onChange={(e) => onChange(e.target.value, e.target.name)}
-                type="email"
-                placeholder="E.g. abc@gmail.com"
-                icon="mail"
-                autocomplete={'off'}
-              />
-            </Column>
+          {/* Email */}
+          <div className="form-group">
+            <input
+              name="email"
+              value={input.email}
+              onChange={handleChange}
+              type="email"
+              placeholder="Your Email"
+              autoComplete="off"
+            />
+          </div>
 
-            {/* Username */}
-            <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
-              <Label withInput={true} required={true}>Username</Label>
-              <Input
-                name="username"
-                value={input.username}
-                onChange={(e) => onChange(e.target.value, e.target.name)}
-                type="text"
-                placeholder="Username"
-                icon="person"
-                autocomplete={'off'}
-              />
-            </Column>
+          {/* Username */}
+          <div className="form-group">
+            <input
+              name="username"
+              value={input.username}
+              onChange={handleChange}
+              type="text"
+              placeholder="Username"
+              autoComplete="off"
+            />
+          </div>
 
-            {/* Password */}
-            <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
-              <Label withInput={true} required={true}>Password</Label>
-              <Input
-                name="password"
-                value={input.password}
-                onChange={(e) => onChange(e.target.value, e.target.name)}
-                type="password"
-                placeholder="Password"
-                icon="lock"
-                autocomplete={'off'}
-              />
-            </Column>
+          {/* Password */}
+          <div className="form-group">
+            <input
+              name="password"
+              value={input.password}
+              onChange={handleChange}
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              autoComplete="off"
+            />
+            <button
+              type="button"
+              className="toggle-password"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "🙈" : "👁️"}
+            </button>
+          </div>
 
-            {/* Date of Birth */}
-            <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
-              <Label withInput={true} required={true}>Date of Birth</Label>
-              <DatePicker
-                name="DOB"
-                value={input.DOB}
-                withInput={true}
-                onDateChange={(currentDate) => onChange(currentDate, 'DOB')}
-                inputOptions={{
-                  placeholder: 'MM/DD/YYYY',
-                  icon: 'cake',
-                  mask: [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]
-                }}
-              />
-            </Column>
+          {/* Date of Birth */}
+          <div className="form-group">
+            <input
+              name="DOB"
+              value={input.DOB}
+              onChange={handleChange}
+              type="date"
+            />
+          </div>
 
-            {/* Designation */}
-            <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
-              <Label withInput={true} required={true}>Designation</Label>
-              <Input
-                name="designation"
-                value={input.designation}
-                onChange={(e) => onChange(e.target.value, e.target.name)}
-                type="text"
-                placeholder="Your Designation"
-                icon="work"
-                autocomplete={'off'}
-              />
-            </Column>
+          {/* Designation */}
+          <div className="form-group">
+            <input
+              name="designation"
+              value={input.designation}
+              onChange={handleChange}
+              type="text"
+              placeholder="Designation"
+              autoComplete="off"
+            />
+          </div>
 
-            {/* Gender */}
-            <Column sizeXL={4} sizeL={4} sizeM={6} className="mr-6 mb-6">
-              <Label withInput={true} required={true}>Gender</Label>
-              <Dropdown
-                options={genderOptions}
+         {/* Gender Dropdown (styled same as inputs) */}
+          <div className="form-group">
+              <select
+                name="gender"
                 value={input.gender}
-                onChange={(value) => onChange(value, 'gender')}
-              />
-            </Column>
-          </Column>
+                onChange={handleChange}
+              >
+                <option value="" disabled>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+          </div>
 
-          {/* Error Message */}
           {error && <div className="error-message">{error}</div>}
 
-          {/* Submit Button */}
-          <div className="d-flex justify-content-center">
-            <Button className="mr-4" onClick={() => navigate('/login')}>Cancel</Button>
-            <Button type="submit" appearance="success" disabled={!input.name || !input.email || !input.username || !input.password || !input.DOB || !input.designation || !input.gender}>Register</Button>
+          <div className="form-actions">
+            <button type="button" onClick={handleCancel}>
+              Cancel
+            </button>
+            <button type="submit" disabled={!allFieldsFilled}>
+              Register
+            </button>
           </div>
+
+          <p className="signin-link">
+            Already have an account?{" "}
+            <a style={{cursor:"pointer"}} onClick={() => navigate('/login')}>
+              Login Here
+            </a>
+          </p>
         </form>
-      </Card>
+      </div>
     </div>
   );
 };
 
 export default Signup;
+
 
 

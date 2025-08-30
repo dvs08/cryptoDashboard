@@ -20,6 +20,7 @@
     width: 100%;
     max-width: 400px;
     text-align: center;
+    height: 96%;
 }
 
 h2 {
@@ -67,5 +68,38 @@ input {
     height: 100vh;
     background-color: #f4f7fc; 
   }
+  .signup .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.password-field {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 45%;
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 12px;
+}
   
 

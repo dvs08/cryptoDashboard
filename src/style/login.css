@@ -52,3 +52,16 @@ input {
     height: 100%;
     width: 100%;
 }
+.signup-link {
+    margin-top: 20px;
+}
+
+.signup-link a {
+    color: blue;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
