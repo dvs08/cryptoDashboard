@@ -1,0 +1,20 @@
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* prevent double scrollbars */
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+}
+.calcRem {
+  flex: 1; /* take all available remaining space */
+  overflow-y: auto; /* scroll if content too tall */
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+

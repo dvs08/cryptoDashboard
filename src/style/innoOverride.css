@@ -1,0 +1,28 @@
+.Input{
+
+    /* border: 2px solid black !important; */
+    /* width: 420px !important;
+    height: 50px !important; */
+}
+
+.Input-input{
+
+    color: black !important;
+}
+
+.Header-search{
+
+    width: auto !important;
+}
+
+.d-flex{
+    justify-content: center ;
+    height: 1rem !important;
+}
+.Header{
+    padding: 0px !important; 
+}
+
+.Grid-cellGroup{
+    height: 3rem;
+}
